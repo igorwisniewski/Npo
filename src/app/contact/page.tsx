@@ -2,15 +2,15 @@ import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const ContactInfoItem = ({ Icon, text, link }) => (
     <div className="flex items-center space-x-4 mb-6">
-        <div className="flex-shrink-0 p-3 bg-cyan-500 rounded-full text-white shadow-lg">
+        <div className="flex-shrink-0 p-3 bg-red-400 rounded-full text-white shadow-lg">
             <Icon className="w-6 h-6" />
         </div>
         {link ? (
-            <a href={link} className="text-gray-700 hover:text-cyan-600 font-medium transition duration-300">
+            <a href={link} className="text-white hover:text-red-600 font-medium transition duration-300">
                 {text}
             </a>
         ) : (
-            <p className="text-gray-700 font-medium">
+            <p className="text-white font-medium">
                 {text}
             </p>
         )}
@@ -32,21 +32,21 @@ export default function Contact() {
 
     return (
         <div className="flex flex-col sm:flex-col-reverse lg:flex-row w-full max-w-6xl gap-8 mx-auto my-12 p-6 bg-white">
-            <div className="lg:w-1/3 p-6 lg:p-10 bg-sky-50 rounded-xl shadow-xl ">
-                <h2 className="text-3xl font-bold text-cyan-700 mb-8 border-b pb-2">Skontaktuj się z nami</h2>
+            <div className="lg:w-1/3 p-6 lg:p-10 bg-red-800 rounded-xl shadow-xl ">
+                <h2 className="text-3xl font-bold text-red-400 mb-8 border-b pb-2">Skontaktuj się z nami</h2>
                 
                 {contactDetails.map((item, index) => (
                     <ContactInfoItem key={`contact-${index}`} {...item} />
                 ))}
 
                 <div className="mt-10">
-                    <h3 className="flex items-center text-xl font-bold text-cyan-700 mb-4 border-b pb-2">
-                        <Clock className="w-5 h-5 mr-2 text-cyan-600" />
+                    <h3 className="flex items-center text-xl font-bold text-red-400 mb-4 border-b pb-2">
+                        <Clock className="w-5 h-5 mr-2" />
                         Godziny Otwarcia
                     </h3>
                     <div className="space-y-2">
                         {openingHours.map((item, index) => (
-                            <div key={`hours-${index}`} className="flex justify-between text-gray-700">
+                            <div key={`hours-${index}`} className="flex justify-between text-white">
                                 <span className="font-medium">{item.day}</span>
                                 <span>{item.hours}</span>
                             </div>
@@ -67,7 +67,7 @@ export default function Contact() {
                             name="email" 
                             required
                             placeholder="Twój adres e-mail"
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 p-3 border" 
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border" 
                         />
                     </label>
 
@@ -78,7 +78,7 @@ export default function Contact() {
                             name="name" 
                             required
                             placeholder="Twoje imię"
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 p-3 border"
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border"
                         />
                     </label>
                     
@@ -97,14 +97,14 @@ export default function Contact() {
                         <input 
                             type='checkbox' 
                             name="property" 
-                            className="form-checkbox h-5 w-5 text-cyan-600 rounded border-gray-300 focus:ring-cyan-500" 
+                            className="form-checkbox h-5 w-5 text-red-600 rounded border-red-300 focus:ring-red-500" 
                         />
                         <span className="text-gray-700 font-medium">Posiadam nieruchomość</span>
                     </label>
 
                     <button 
                         type="submit"
-                        className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition duration-300 ease-in-out mt-6"
+                        className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-red-700 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition duration-300 ease-in-out mt-6"
                     >
                         Wyślij
                     </button>
