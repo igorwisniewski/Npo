@@ -7,9 +7,12 @@ DevelopmentTimeline.propTypes = {
     customColor: PropTypes.string.isRequired,
 };
 
+interface DevelopmentTimelineProps {
+    customColor: string;
+}
 
 // Komponent osi czasu (Timeline). Wyświetla listę planów w responsywnym układzie.
-export default function DevelopmentTimeline({ customColor }) {
+export default function DevelopmentTimeline({ customColor }: DevelopmentTimelineProps) {
     // Lista planów rozwojowych
     const plans = [
         { id: 1, title: "Ekspansja na nowe rynki", description: "Wprowadzenie naszych usług prawnych na rynki Europy Zachodniej, z naciskiem na Niemcy i Francję." },
@@ -44,11 +47,11 @@ export default function DevelopmentTimeline({ customColor }) {
                             {/* Wersja mobilna: Stack pionowy (kropka i linia po lewej, treść po prawej). */}
                             <div className="contents md:hidden">
                                 <div className="col-start-1 col-end-2 relative flex flex-col items-center mr-4">
-                                    <div className={`w-8 h-8 rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-white ring-2 ring-white relative z-10`} style={{ backgroundColor: customColor }}>
+                                    <div className={`w-8 h-8 rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-white ring-2 ring-white relative z-10 bg-red-700`}>
                                         {item.id}
                                     </div>
                                     {index < plans.length - 1 && (
-                                        <div className={`h-full w-0.5 absolute top-6 bottom-0`} style={{ backgroundColor: customColor }}></div>
+                                        <div className={`h-full w-0.5 absolute top-6 bottom-0 bg-red-700`}></div>
                                     )}
                                 </div>
                                 <div className="col-start-2 col-end-3 py-4 pl-0 pr-4 -mt-2"> 
@@ -68,9 +71,9 @@ export default function DevelopmentTimeline({ customColor }) {
                                 {/* Linia i kropka centralna */}
                                 <div className="md:col-start-2 md:col-end-3 relative flex items-center justify-center">
                                     {index < plans.length && (
-                                        <div className={`h-full w-0.5 absolute top-0 bottom-0`} style={{ backgroundColor: customColor }}></div>
+                                        <div className={`h-full w-0.5 absolute top-0 bottom-0 bg-red-700`}></div>
                                     )}
-                                    <div className={`w-15 lg:h-15 rounded-full shadow-lg flex items-center justify-center text-sm font-bold text-white ring-4 ring-white relative z-10`} style={{ backgroundColor: customColor }}>
+                                    <div className={`w-15 lg:h-15 rounded-full shadow-lg flex items-center justify-center text-sm font-bold text-white ring-4 ring-white relative z-10 bg-red-700`}>
                                         {item.id}
                                     </div>
                                 </div>

@@ -1,6 +1,12 @@
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
-const ContactInfoItem = ({ Icon, text, link }) => (
+interface ContactInfoItemProps {
+    Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    text: string;
+    link?: string;
+}
+
+const ContactInfoItem: React.FC<ContactInfoItemProps> = ({ Icon, text, link }) => (
     <div className="flex items-center space-x-4 mb-6">
         <div className="flex-shrink-0 p-3 bg-red-400 rounded-full text-white shadow-lg">
             <Icon className="w-6 h-6" />

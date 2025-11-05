@@ -15,7 +15,7 @@ const StatCard = ({ value, label, icon: Icon }) => (
         {/* Warstwa z dużą, przezroczystą ikoną w tle dla efektu wizualnego */}
         <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
             {/* Ikona zajmująca dużą część karty z niską przezroczystością */}
-            {Icon && <Icon className="w-[80%] h-[80vh] text-red-50 opacity-80" />}
+            {Icon && <Icon className="w-[80%] h-[80vh] text-red-100 opacity-80" />}
         </div>
 
         {/* Zawartość karty (wartość i etykieta) umieszczona na wierzchu (z-10) */}

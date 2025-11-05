@@ -1,8 +1,10 @@
 // AchievementsSection.jsx
 import React from 'react';
-import AchievementCard from './AchievementCard'; // Zakładamy import
+import AchievementCard from './AchievementCard';
 
-export default function AchievementsSection({ customColor }) {
+export default function AchievementsSection() {
+    const defaultColor = '#700806';
+
     return (
         // SEKCJA 3: NASZE OSIĄGNIĘCIA
         <div className="w-full bg-gray-50 py-20 px-6 lg:px-12 xl:px-24 flex flex-col items-center justify-center">
@@ -14,20 +16,20 @@ export default function AchievementsSection({ customColor }) {
             <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                 <AchievementCard 
                     title="2000+ Spraw"
-                    description="Reprezentowaliśmy naszych Klientów w ponad 2000 skomplikowanych sprawach, z wysokim wskaźnikiem pozytywnych rozstrzygnięć."
-                    customColor={customColor}
+                    description="Reprezentowaliśmy naszych Klientów w ponad 2000 sprawach, z wysokim wskaźnikiem pozytywnych rozstrzygnięć."
+                    customColor={defaultColor}
                 />
 
                 <AchievementCard 
                     title="18+ Lat"
                     description="Ponad 18 lat doświadczenia na rynku polskim i międzynarodowym. Jesteśmy gotowi na każde wyzwanie prawne."
-                    customColor={customColor}
+                    customColor={defaultColor}
                 />
 
                 <AchievementCard 
                     title="98% Zadowolenia"
                     description="Nasi Klienci cenią nas za profesjonalizm, dyskrecję i skuteczne podejście. Świadczy o tym 98% zadowolonych Klientów."
-                    customColor={customColor}
+                    customColor={defaultColor}
                 />
             </div>
         </div>

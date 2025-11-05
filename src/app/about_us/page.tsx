@@ -5,8 +5,10 @@ import MissionValuesSection from './components/missionValues';
 import AchievementsSection from './components/achievements';
 import DevelopmentTimeline from './components/developmentTimeline'; // Zmieniono nazwę z Timeline
 
+
+
 // Stała przechowująca niestandardowy kolor marki.
-const customColor = '#700806';
+const defaultColor = '#700806';
 
 // Główny komponent strony "O Nas".
 export default function AboutUs() {
@@ -21,23 +23,20 @@ export default function AboutUs() {
             
             {/* SEKCJA 1: HERO */}
             <HeroSection 
-                heroBackgroundStyle={heroBackgroundStyle} 
-                customColor={customColor} 
+                heroBackgroundStyle={heroBackgroundStyle}  
             />
             
             {/* SEKCJA 2: MISJA I WARTOŚCI */}
-            <MissionValuesSection 
-                customColor={customColor} 
-            />
+            <MissionValuesSection />
             
             {/* SEKCJA 3: NASZE OSIĄGNIĘCIA */}
             <AchievementsSection 
-                customColor={customColor} 
+                customColor={defaultColor} 
             />
             
             {/* SEKCJA 4: PLANY NA ROZWÓJ */}
             <DevelopmentTimeline 
-                customColor={customColor} 
+                customColor={defaultColor} 
             />
             
         </main>

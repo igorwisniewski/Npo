@@ -1,9 +1,13 @@
 // HeroSection.jsx
 import React from 'react';
 
-export default function HeroSection({ heroBackgroundStyle, customColor }) {
+interface HeroSectionProps {
+    heroBackgroundStyle: React.CSSProperties;
+}
+
+export default function HeroSection({ heroBackgroundStyle }: HeroSectionProps) {
     // Klasa dla przycisku akcji.
-    const buttonClasses = `bg-[${customColor}] hover:bg-[#5a0604] text-white font-bold py-3 px-6 rounded-sm shadow-lg transition duration-300 ease-in-out cursor-pointer transform hover:scale-105`;
+    const buttonClasses = `bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-sm shadow-lg transition duration-300 ease-in-out cursor-pointer transform hover:scale-105`;
 
     return (
         // SEKCJA 1: HERO
