@@ -1,7 +1,7 @@
 // App.jsx (Główny Plik)
 import React from 'react';
 // Importowanie ikon
-import { Briefcase, Gavel, TrendingUp, Scale, GraduationCap, Percent } from 'lucide-react';
+import { Briefcase, Gavel, TrendingUp } from 'lucide-react';
 
 // Importowanie wydzielonych komponentów
 import HeroSection from './components/HeroSection';
@@ -35,22 +35,21 @@ const servicesData = [
     },
 ];
 
-// Dane dla sekcji Statystyk.
 const statsData = [
     {
         value: '2000+',
         label: 'Rozwiązanych spraw',
-        icon: Scale, // Ikona wagi
+        iconName: 'Scale', // Przekazujemy NAZWĘ jako string
     },
     {
         value: '18+',
         label: 'Lat doświadczenia',
-        icon: GraduationCap, // Ikona czapki
+        iconName: 'GraduationCap', // Przekazujemy NAZWĘ jako string
     },
     {
         value: '98%',
         label: 'Zadowolonych klientów',
-        icon: Percent, // Ikona procentu
+        iconName: 'Percent', // Przekazujemy NAZWĘ jako string
     },
 ];
 
@@ -62,21 +61,21 @@ const HomeSection = () => {
     // Ścieżki do obrazów używanych w sekcji Hero i O Nas.
     // UWAGA: W środowisku produkcyjnym ścieżki mogą wymagać poprawienia (np. użycia funkcji importu w Webpacku/Vite).
     const specialistImageSrc = "/images/kamilheader.png";
-    const officeImageSrc = "/home.webp ";
+    const officeImageSrc = "/images/mainabout.png ";
 
     return (
         // Główny kontener strony.
         <div className="font-sans">
-            
+
             {/* Sekcja 1: Hero (nagłówek) */}
             <HeroSection specialistImageSrc={specialistImageSrc} />
-            
+
             {/* Sekcja 2: Statystyki i Wyniki */}
             <StatsSection statsData={statsData} />
 
             {/* Sekcja 3: O nas (z obrazkiem biura) */}
             <AboutSection officeImageSrc={officeImageSrc} />
-            
+
             {/* Sekcja 4: Usługi (z kartami ServiceCard) */}
             <ServicesSection servicesData={servicesData} />
 
