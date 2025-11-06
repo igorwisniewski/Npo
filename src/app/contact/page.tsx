@@ -39,14 +39,14 @@ export default function Contact() {
     return (
         <div className="flex flex-col sm:flex-col-reverse lg:flex-row w-full max-w-6xl gap-8 mx-auto my-12 p-6 bg-white">
             <div className="lg:w-1/3 p-6 lg:p-10 bg-red-800 rounded-xl shadow-xl ">
-                <h2 className="text-3xl font-bold text-red-400 mb-8 border-b pb-2">Skontaktuj się z nami</h2>
+                <h2 className="text-3xl font-bold text-gray-50 mb-8 border-b pb-2">Skontaktuj się z nami</h2>
                 
                 {contactDetails.map((item, index) => (
                     <ContactInfoItem key={`contact-${index}`} {...item} />
                 ))}
 
                 <div className="mt-10">
-                    <h3 className="flex items-center text-xl font-bold text-red-400 mb-4 border-b pb-2">
+                    <h3 className="flex items-center text-xl font-bold text-gray-50 mb-4 border-b pb-2">
                         <Clock className="w-5 h-5 mr-2" />
                         Godziny Otwarcia
                     </h3>
