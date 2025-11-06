@@ -2,9 +2,10 @@
 import React from 'react';
 import HeroSection from './components/hero';
 import MissionValuesSection from './components/missionValues';
-import AchievementsSection from './components/achievements';
+import ResultsSection from './components/results';
 import DevelopmentTimeline from './components/developmentTimeline'; // Zmieniono nazwę z Timeline
-
+import TeamSection from './components/TeamSection';
+import AchievementsSection from './components/Achievements';
 
 
 // Stała przechowująca niestandardowy kolor marki.
@@ -30,14 +31,17 @@ export default function AboutUs() {
             <MissionValuesSection />
             
             {/* SEKCJA 3: NASZE OSIĄGNIĘCIA */}
-            <AchievementsSection 
-                customColor={defaultColor} 
-            />
+            <ResultsSection />
             
             {/* SEKCJA 4: PLANY NA ROZWÓJ */}
             <DevelopmentTimeline 
                 customColor={defaultColor} 
             />
+
+            {/* SEKCJA 5: POZNAJ NASZĄ EKIPĘ */}
+            <TeamSection />
+
+            <AchievementsSection />
             
         </main>
     )

@@ -1,20 +1,13 @@
 // AchievementCard.jsx
 import React from 'react';
-import PropTypes from 'prop-types';
 
-AchievementCard.propTypes = {
-    /** Kolor akcentujący, np. '#007AFF'. Wymagany ciąg znaków. */
-    customColor: PropTypes.string.isRequired,
-};
-
-interface AchievementCardProps {
+interface ResultsCardProps {
     title: string;
     description: string;
-    customColor: any;
 }
 
 // Komponent AchievementCard - formatuje osiągnięcia firmy w postaci kart.
-export default function AchievementCard({ title, description, customColor }: AchievementCardProps) {
+export default function ResultCard({ title, description }: ResultsCardProps) {
     // Wyróżniona Liczba/Wskaźnik (np. "2000+", "18+", "98%") to pierwsza część title.
     const numericPart = title.split(' ')[0];
     // Opis wskaźnika (np. "Spraw", "Lat", "Zadowolenia") to reszta title.
@@ -22,7 +15,7 @@ export default function AchievementCard({ title, description, customColor }: Ach
 
     return (
         // Karta z cieniem w kolorze customColor i efektem hover.
-        <div className="bg-white p-8 h-[30vh] sm:h-[30vh] sm:p-10 rounded-xl shadow-md transition duration-300 ease-in-out hover:shadow-2xl shadow-gray-500 border border-gray-100 flex flex-col justify-between items-center text-center">
+        <div className="bg-white w-[100%] p-8 h-[30vh] sm:h-[30vh] sm:p-10 rounded-xl shadow-md transition duration-300 ease-in-out hover:shadow-2xl shadow-gray-500 border border-gray-100 flex flex-col justify-between items-center text-center">
 
             {/* Opis wskaźnika */}
             <p className="text-base sm:text-lg font-semibold text-gray-700 mb-4">

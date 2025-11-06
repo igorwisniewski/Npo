@@ -12,7 +12,7 @@ export default function MissionValuesSection() {
             {/* Lewa Kolumna: Tekst i Przyciski */}
             <div className="w-full lg:w-[60%] flex flex-col items-center lg:items-start justify-center gap-6 sm:gap-8 text-center lg:text-left">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800">
-                    Nasza misja i wartości
+                    Od czego to się zaczeło ?
                 </h2>
                 
                 <span className="text-base sm:text-lg text-gray-600 max-w-xl lg:max-w-none">
