@@ -6,14 +6,12 @@ import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { gsap } from 'gsap';
 
-// --- Komponent Logo (bez zmian) ---
 const Logo = () => (
     <Link href="/" className="text-4xl font-extrabold text-red-700 tracking-tight">
-        NPO
+        <Image src="/images/npopng.png" alt="Logo" width="100" height="70" />
     </Link>
 );
 
-// --- Definicje Linków (bez zmian) ---
 const navLinks = [
     {
         href: '/about_us',
@@ -32,20 +30,16 @@ const rightNavLinks = [
     { href: '/contact', label: 'Kontakt' },
 ];
 
-// --- Główny Komponent Navbar ---
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    // Referencje (bez zmian)
     const oNasLinkRef = useRef<HTMLAnchorElement>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const caretRef = useRef<HTMLDivElement>(null);
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-    // === NOWA ZMIANA: Ref dla timera opóźniającego ===
     const leaveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Animacja GSAP
     useEffect(() => {
         gsap.set(dropdownRef.current, {
             opacity: 0,
@@ -53,7 +47,6 @@ export default function Navbar() {
             y: -15,
         });
 
-        // Inicjalizacja timeline (bez zmian)
         timelineRef.current = gsap.timeline({ paused: true, reversed: true })
             .to(dropdownRef.current, {
                 opacity: 1,
@@ -63,12 +56,10 @@ export default function Navbar() {
                 ease: 'power2.out'
             });
 
-        // === ZMIENIONA LOGIKA HOVER ===
 
         const oNasLink = oNasLinkRef.current;
         const dropdown = dropdownRef.current;
 
-        // Funkcja otwierająca menu
         const onMouseEnter = () => {
             // Anuluj timer zamykania, jeśli istnieje
             if (leaveTimerRef.current) {
@@ -79,7 +70,6 @@ export default function Navbar() {
             timelineRef.current?.play();
         };
 
-        // Funkcja zamykająca menu (z opóźnieniem)
         const onMouseLeave = () => {
             // Ustaw timer, który zamknie menu po 100ms
             leaveTimerRef.current = setTimeout(() => {
@@ -87,7 +77,6 @@ export default function Navbar() {
             }, 100); // 100ms czasu na przejście kursorem
         };
 
-        // Przypisz listenery do OBU elementów (linku "O nas" i całego dropdownu)
         if (oNasLink && dropdown) {
             oNasLink.addEventListener('mouseenter', onMouseEnter);
             oNasLink.addEventListener('mouseleave', onMouseLeave);
@@ -95,7 +84,6 @@ export default function Navbar() {
             dropdown.addEventListener('mouseleave', onMouseLeave);
         }
 
-        // Sprzątanie
         return () => {
             if (oNasLink && dropdown) {
                 oNasLink.removeEventListener('mouseenter', onMouseEnter);
@@ -110,7 +98,6 @@ export default function Navbar() {
         };
     }, []);
 
-    // Pozycjonowanie trójkąta (Careta) - bez zmian
     useLayoutEffect(() => {
         const alignCaret = () => {
             if (oNasLinkRef.current && caretRef.current) {
@@ -134,12 +121,10 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
 
-                    {/* === WIDOK DESKTOP === */}
                     <div className="hidden lg:flex flex-1 items-center justify-start space-x-8">
                         {navLinks.map((link) => (
                             link.subLinks ? (
                                 // === SEKCJA "O NAS" ===
-                                // Zmieniliśmy 'div' na 'Link', aby sam link był refem
                                 <Link
                                     key={link.label}
                                     href={link.href}
@@ -150,7 +135,6 @@ export default function Navbar() {
                                     <ChevronDown className="w-4 h-4 ml-1" />
                                 </Link>
                             ) : (
-                                // Linki bez dropdownu (np. Słownik)
                                 <Link
                                     key={link.label}
                                     href={link.href}
@@ -162,7 +146,6 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* === Reszta (Logo, Prawe linki) === */}
                     <div className="hidden lg:flex flex-shrink-0"><Logo /></div>
                     <div className="hidden lg:flex flex-1 items-center justify-end space-x-8">
                         {rightNavLinks.map((link) => (
@@ -172,7 +155,6 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    {/* === WIDOK MOBILE (Bez zmian) === */}
                     <div className="lg:hidden flex flex-1 justify-between items-center">
                         <Logo />
                         <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle navigation" aria-expanded={isOpen}>
@@ -187,13 +169,11 @@ export default function Navbar() {
       ===============================================
       */}
             <div
-                ref={dropdownRef} // Ten element dostaje teraz mouseenter/mouseleave
+                ref={dropdownRef}
                 className="absolute top-full left-0 right-0 z-40 invisible"
             >
-                {/* Czerwona linia (100% szerokości) */}
                 <div className="h-0.5 bg-red-700 w-full"></div>
 
-                {/* Trójkąt (Caret) */}
                 <div
                     ref={caretRef}
                     className="absolute -top-2 w-0 h-0
@@ -202,13 +182,10 @@ export default function Navbar() {
                       border-b-8 border-b-red-700"
                 />
 
-                {/* Tło menu (100% szerokości) */}
                 <div className="bg-white shadow-lg">
-                    {/* Kontener centrujący treść menu */}
                     <div className=" mx-auto pl-4 sm:pl-6 lg:pl-8">
                         <div className="flex overflow-hidden h-64">
 
-                            {/* Lewa Kolumna (Linki) */}
                             <div
                                 className="w-1/3 bg-white p-8 flex flex-col justify-center m-3"
                                 style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0 100%)' }}
@@ -228,10 +205,9 @@ export default function Navbar() {
                                 </nav>
                             </div>
 
-                            {/* Prawa Kolumna (Obraz) */}
                             <div className="w-2/3 relative overflow-hidden bg-blue-500">
                                 <Image
-                                    src="/images/navabout.png" // ZMIEŃ NA OBRAZEK Z MENU
+                                    src="/images/navabout.png"
                                     alt="Nasza misja"
                                     layout="fill"
                                     className="object-cover"
@@ -241,9 +217,7 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-            {/* === KONIEC "UKRYTEJ SEKCJI" === */}
 
-            {/* === ROZWIJANE MENU MOBILE (Bez zmian) === */}
             {isOpen && (
                 <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 z-50">
                     <div className="flex flex-col px-6 py-6 space-y-4">
