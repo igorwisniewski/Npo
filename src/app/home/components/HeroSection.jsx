@@ -8,7 +8,7 @@ import StandardImage from './StandardImage'; // Załóżmy, że plik jest w tym 
  * @param {string} props.specialistImageSrc - Ścieżka do obrazka specjalisty.
  */
 const HeroSection = ({ specialistImageSrc }) => (
-    <section className="w-full h-[100vh] bg-white overflow-hidden shadow-xl py-16 lg:py-0 lg:min-h-[800px] flex items-center">
+    <section className="w-full h-[100vh] bg-white overflow-hidden  py-16 lg:py-0 lg:min-h-[800px] flex items-center">
         {/* Ograniczamy szerokość do max-w-7xl i centrujemy */}
         <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
             
@@ -20,7 +20,7 @@ const HeroSection = ({ specialistImageSrc }) => (
                     <div className="max-w-2xl">
                         {/* Tag "TWOI" */}
                         <div className="flex justify-center lg:justify-start">
-                            <p className="text-sm font-bold bg-red-700 pt-1 pb-1 pl-5 pr-5 w-fit rounded-2xl text-white uppercase">
+                            <p className="text-sm font-bold bg-red-800 pt-1 pb-1 pl-5 pr-5 w-fit rounded-2xl text-white uppercase">
                                 TWOI
                             </p>
                         </div>
@@ -38,14 +38,14 @@ const HeroSection = ({ specialistImageSrc }) => (
                         {/* Przyciski CTA */}
                         <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                             <a 
-                                href="/konsultacja" 
-                                className="px-6 py-3 text-white bg-red-700 hover:bg-red-800 transition duration-300 font-medium rounded shadow-md border border-red-700 text-sm sm:text-base whitespace-nowrap"
+                                href="/kontakt"
+                                className="px-6 py-3 text-white bg-red-800 hover:bg-white hover:text-red-900 transition duration-300 font-medium rounded-xl shadow-md border border-red-800 text-sm sm:text-base whitespace-nowrap"
                             >
                                 Umów darmową konsultację
                             </a>
                             <a 
-                                href="/czytaj-dalej" 
-                                className="px-6 py-3 text-red-700 bg-white hover:bg-red-50 transition duration-300 font-medium rounded border border-red-700 text-sm sm:text-base whitespace-nowrap"
+                                href="#counter"
+                                className="px-6 py-3 text-red-800 bg-white hover:bg-red-800 hover:text-white transition duration-300 font-medium rounded-xl border border-red-800 text-sm sm:text-base whitespace-nowrap"
                             >
                                 Czytaj dalej
                             </a>
@@ -54,7 +54,7 @@ const HeroSection = ({ specialistImageSrc }) => (
                 </div>
                 {/* Prawa kolumna: Grafika */}
                 <div className="relative w-full flex justify-center lg:justify-end items-center order-1 lg:order-2 **hidden lg:flex**">
-                    <div className="hidden lg:block absolute top-0 right-[-25vw] h-full w-[60vw] bg-red-800 transform skew-x-[-15deg] origin-right pointer-events-none z-0"></div>
+                    <div className="hidden lg:block absolute top-0 right-[-25vw] h-full w-[60vw] bg-red-900 transform skew-x-[-15deg] origin-right pointer-events-none z-0"></div>
 
                     {/* Warstwa geometryczna w tle */}
                     {/* Kontener na obrazek specjalisty */}
@@ -65,8 +65,8 @@ const HeroSection = ({ specialistImageSrc }) => (
                             <StandardImage
                                 src={specialistImageSrc} 
                                 alt="Portret specjalisty" 
-                                fill={true} 
-                                style={{ objectFit: 'cover' }}
+
+
                                 className="object-cover"
                             />
                         </div>

@@ -58,10 +58,10 @@ const statsData = [
  * Główny komponent strony (App).
  * Odpowiada za cały układ strony głównej, składając wszystkie sekcje i komponenty.
  */
-const App = () => {
+const HomeSection = () => {
     // Ścieżki do obrazów używanych w sekcji Hero i O Nas.
     // UWAGA: W środowisku produkcyjnym ścieżki mogą wymagać poprawienia (np. użycia funkcji importu w Webpacku/Vite).
-    const specialistImageSrc = "/hero.png";
+    const specialistImageSrc = "/images/kamilheader.png";
     const officeImageSrc = "/home.webp ";
 
     return (
@@ -85,4 +85,4 @@ const App = () => {
 };
 
 // Eksport głównego komponentu strony.
-export default App;
+export default HomeSection;
