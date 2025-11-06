@@ -8,11 +8,11 @@ interface ContactInfoItemProps {
 
 const ContactInfoItem: React.FC<ContactInfoItemProps> = ({ Icon, text, link }) => (
     <div className="flex items-center space-x-4 mb-6">
-        <div className="flex-shrink-0 p-3 bg-red-400 rounded-full text-white shadow-lg">
+        <div className="flex-shrink-0 p-3 bg-red-900 rounded-full text-white shadow-lg">
             <Icon className="w-6 h-6" />
         </div>
         {link ? (
-            <a href={link} className="text-white hover:text-red-600 font-medium transition duration-300">
+            <a href={link} className="text-white hover:text-red-200 font-medium transition duration-300">
                 {text}
             </a>
         ) : (
@@ -103,7 +103,8 @@ export default function Contact() {
                         <input 
                             type='checkbox' 
                             name="property" 
-                            className="form-checkbox h-5 w-5 text-red-600 rounded border-red-300 focus:ring-red-500" 
+                            className="h-5 w-5 rounded border-red-800
+               accent-red-800 focus:ring-red-800"
                         />
                         <span className="text-gray-700 font-medium">Posiadam nieruchomość</span>
                     </label>
