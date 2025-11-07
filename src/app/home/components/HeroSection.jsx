@@ -97,7 +97,7 @@ const HeroSection = ({ specialistImageSrc }) => {
                             {/* Przyciski CTA (będą 4. dzieckiem) */}
                             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                                 <Link
-                                    href="/kontakt"
+                                    href="/contact"
                                     className="px-6 py-3 text-white bg-red-800 hover:bg-white hover:text-red-900 transition duration-300 font-medium rounded-xl shadow-md border border-red-800 text-sm sm:text-base whitespace-nowrap"
                                 >
                                     Umów darmową konsultację

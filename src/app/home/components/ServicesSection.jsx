@@ -4,7 +4,7 @@ import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Briefcase, Gavel, TrendingUp, ChevronDown } from 'lucide-react';
-
+import Link from 'next/link'
 gsap.registerPlugin(ScrollTrigger);
 
 const iconMap = {
@@ -80,12 +80,12 @@ const ServiceCard = ({ icon: Icon, title, subtitle, description, buttonText }) =
             </div>
 
             {/* Przycisk (bez zmian, ale teraz będzie na dole) */}
-            <a
-                href={`/${title.toLowerCase().replace(/\s+/g, '-')}`}
+            <Link
+                href="/contact"
                 className="block w-full text-center px-6 py-3 text-white bg-red-800 hover:bg-red-900 transition duration-300 font-medium rounded-lg shadow-lg"
             >
                 {buttonText}
-            </a>
+            </Link>
         </div>
     );
 };
