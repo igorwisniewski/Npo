@@ -69,7 +69,7 @@ const HeroSection = ({ specialistImageSrc }) => {
     }, []); // Pusta tablica zależności = uruchom tylko raz przy montowaniu
 
     return (
-        <section className="w-full h-[100vh] bg-white overflow-hidden py-16 lg:py-0 lg:min-h-[800px] flex items-center">
+        <section className="w-full min-h-[100vh] bg-white overflow-hidden  lg:py-0  flex items-center">
             <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
                 <div className="flex flex-col lg:flex-row min-h-[500px] lg:min-h-[70vh] justify-center items-center">
 
