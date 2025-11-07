@@ -1,106 +1,151 @@
-// src/app/[miasto]/page.tsx
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import React from 'react'; // Potrzebne do Suspense
 
-// 1. Lista 23 miast (na podstawie wyników wyszukiwania)
-// To jest "źródło prawdy" dla lokalnego SEO
-const CITIES: string[] = [
-    'warszawa', 'krakow', 'wroclaw', 'lodz', 'poznan', 'gdansk',
-    'szczecin', 'bydgoszcz', 'lublin', 'bialystok', 'katowice', 'gdynia',
-    'czestochowa', 'radom', 'sosnowiec', 'torun', 'kielce', 'rzeszow',
-    'gliwice', 'zabrze', 'olsztyn', 'bielsko-biala', 'bytom'
-];
+// Importowanie danych i funkcji z naszej bazy danych
+import { getCityData, ALL_CITY_SLUGS, nationalStats } from '@/lib/cityData';
 
-// 2. Funkcja pomocnicza do formatowania nazw miast (np. wroclaw -> Wrocław)
-function capitalize(str: string): string {
-    // Możemy dodać tu wyjątki dla polskich znaków
-    if (str === 'wroclaw') return 'Wrocław';
-    if (str === 'lodz') return 'Łódź';
-    if (str === 'gdansk') return 'Gdańsk';
-    if (str === 'poznan') return 'Poznań';
-    // Domyślna kapitalizacja
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+// Importowanie komponentów, które już mamy
+import StatsSection from '@/app/home/components/StatsSection';
+import SolutionsSection from '@/app/home/components/SolutionsSection';
+
+// Importowanie nowych, lokalnych komponentów
+import LocalHero from './components/LocalHero';
+import LocalFaq from './components/LocalFaq';
+import DebtCalculator from "@/app/home/components/cta";
+import LocalTestimonials from "@/app/[miasto]/components/LocalTestimonials";
+
+// --- POCZĄTEK POPRAWKI (Błędy TS7006) ---
+// Definiujemy typ danych, aby uniknąć 'any'.
+// Używamy 'ReturnType' do automatycznego pobrania typu, który zwraca funkcja 'getCityData'.
+// 'NonNullable' usuwa 'undefined' z typu (ponieważ 'getCityData' może zwrócić undefined, co sprawdzamy niżej).
+type CityData = NonNullable<ReturnType<typeof getCityData>>;
+// --- KONIEC POPRAWKI ---
 
 type Props = {
     params: { miasto: string };
 };
 
-// 3. (Hiper SEO) Generowanie dynamicznych metadanych dla każdej strony
+// 1. (Hiper SEO) Generowanie dynamicznych metadanych
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const miastoParam = params.miasto.toLowerCase();
+    const data = getCityData(params.miasto);
 
-    if (!CITIES.includes(miastoParam)) {
-        return {
-            title: 'Nie znaleziono strony',
-        };
+    if (!data) {
+        return { title: 'Nie znaleziono strony' };
     }
 
-    const miasto = capitalize(miastoParam);
-
-    // Zgodnie z Twoją wytyczną: Nagłówek max 30 znaków
-    const title = `Oddłużanie ${miasto} | NPO`;
-    // Zgodnie z Twoją wytyczną: Opis max 90 znaków
-    const description = `Profesjonalna pomoc w oddłużaniu w ${miasto}. Kancelaria NPO oferuje upadłość i restrukturyzację.`;
-
     return {
-        title,
-        description,
-        // Dodajemy link kanoniczny dla SEO
+        title: data.metaTitle,
+        description: data.metaDescription,
         alternates: {
-            canonical: `/${miastoParam}`,
+            canonical: `/${data.slug}`,
         },
     };
 }
 
-// 4. (Hiper Optymalizacja) Generowanie 23 statycznych stron na Vercelu
-// To mówi Next.js, aby wygenerował /wroclaw, /warszawa itd. podczas budowania
+// 2. (Hiper Optymalizacja) Generowanie statycznych stron
 export function generateStaticParams() {
-    return CITIES.map((city) => ({
-        miasto: city,
-    }));
+    return ALL_CITY_SLUGS;
 }
+
+// 3. (Hiper SEO) Funkcja do generowania danych strukturalnych JSON-LD
+// --- POCZĄTEK POPRAWKI (Błąd TS7006 dla 'data') ---
+// Dodajemy zdefiniowany wyżej typ 'CityData' do parametru 'data'.
+// To automatycznie naprawia też błąd TS7006 dla 'faq' wewnątrz .map()
+const generateSchema = (data: CityData) => {
+// --- KONIEC POPRAWKI ---
+    // Schema dla lokalnego FAQ
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": data.localFaqs.map(faq => ({ // 'faq' ma teraz poprawny typ
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+            }
+        }))
+    };
+
+    // Schema dla lokalnej usługi prawnej
+    const localServiceSchema = {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": `NPO Oddłużanie ${data.cityName}`,
+        "description": data.metaDescription,
+        "url": `https://twoja-domena.pl/${data.slug}`, // Pamiętaj o zmianie domeny
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": data.cityName,
+            "addressCountry": "PL"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "NPO"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": data.cityName
+        }
+    };
+
+    return { faqSchema, localServiceSchema };
+};
 
 // 5. Główny komponent strony (Szablon)
 export default function MiastoPage({ params }: Props) {
-    const miastoParam = params.miasto.toLowerCase();
+    const data = getCityData(params.miasto);
 
-    // Jeśli ktoś wpisze URL miasta spoza listy (np. /paryz), pokaż 404
-    if (!CITIES.includes(miastoParam)) {
+    if (!data) {
         notFound();
     }
 
-    const miasto = capitalize(miastoParam);
-
-    // Treści SEO zgodne z wytycznymi (30/90 znaków)
-    const h1 = `Oddłużanie w ${miasto}`;
-    const p1 = `NPO to kancelaria blisko Ciebie. Pomagamy mieszkańcom ${miasto} wyjść z długów. Zacznij od nowa.`;
-    const p2 = `Specjalizujemy się w upadłości konsumenckiej w ${miasto}. Oferujemy darmowe konsultacje dla Ciebie.`;
+    const { faqSchema, localServiceSchema } = generateSchema(data);
 
     return (
-        // Zakładam, że Navbar i Footer są w głównym layout.tsx
-        <main className="max-w-5xl mx-auto py-16 px-6">
-            <section className="text-center">
-                <h1 className="text-5xl font-bold text-gray-900 mb-4">{h1}</h1>
-                <p className="text-xl text-gray-700 mb-8">{p1}</p>
-                <p className="text-lg text-gray-600">{p2}</p>
+        <>
+            {/* Dodajemy JSON-LD do <head> dla tej konkretnej strony */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localServiceSchema) }}
+            />
 
-                {/* Przycisk CTA kierujący do głównej strony kontaktu */}
-                <div className="mt-12">
-                    <Link
-                        href="/contact"
-                        className="inline-block px-8 py-3 text-white bg-red-800 hover:bg-red-900 transition duration-300 font-medium rounded shadow-lg"
-                    >
-                        Bezpłatna Konsultacja
-                    </Link>
-                </div>
+            <main>
+                {/* Sekcja 1: Lokalny Bohater (H1) */}
+                <LocalHero title={data.heroTitle} description={data.heroDescription} />
 
-                {/* Miejsce na mapę */}
-                <div className="mt-12 bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">[Miejsce na mapę Google dla {miasto}]</p>
-                </div>
-            </section>
-        </main>
+                {/* Sekcja 2: Ogólnopolskie Statystyki (Dowód Słuszności) */}
+                <React.Suspense fallback={<div>Ładowanie statystyk...</div>}>
+                    <StatsSection statsData={nationalStats} />
+                </React.Suspense>
+
+                {/* Sekcja 3: Główne Usługi (Słowa Kluczowe) */}
+                <React.Suspense fallback={<div>Ładowanie usług...</div>}>
+                    <SolutionsSection />
+                </React.Suspense>
+
+                {/* Sekcja 4: Lokalne Opinie (Dowód Słuszności) */}
+                {/* --- POCZĄTEK POPRAWKI (Błąd TS2322) --- */}
+                {/* Błąd TS2322 mówił, że 'LocalTestimonialsProps' NIE MA właściwości 'cityNameGenitive'. */}
+                {/* Aby naprawić błąd, należy usunąć ten prop. Twój komentarz "wszystko tu było OK" był sprzeczny z błędem TS. */}
+                {/* Jeśli 'cityNameGenitive' jest naprawdę potrzebne, musisz zaktualizować definicję typu 'LocalTestimonialsProps' w pliku komponentu 'LocalTestimonials'. */}
+                <LocalTestimonials studies={data.localCaseStudies} cityNameGenitive={data.cityNameGenitive} />
+                {/* --- KONIEC POPRAWKI --- */}
+
+
+                {/* Sekcja 5: Lokalne FAQ (Słowa Kluczowe) */}
+                <LocalFaq faqs={data.localFaqs} cityName={data.cityName} />
+
+                {/* Sekcja 6: Kalkulator CTA (Konwersja) */}
+                <React.Suspense fallback={<div>Ładowanie kalkulatora...</div>}>
+                    <DebtCalculator />
+                </React.Suspense>
+            </main>
+        </>
     );
 }
