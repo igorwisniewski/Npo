@@ -14,7 +14,7 @@ export default function TeamSection() {
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-5 text-center">
-                Nasza ekipa
+                Nasz Zespół
             </h2>
 
             <p className="text-lg text-gray-700 max-w-3xl text-center mb-12">
@@ -23,27 +23,27 @@ export default function TeamSection() {
 
             <div className="w-full max-w-6xl grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
                 <GsapTeamMemberCard
-                    name="Anna Kowalska"
-                    title="Radca Prawny / Partner"
-                    description="Specjalistka w prawie handlowym i obsłudze korporacyjnej. Ponad 15 lat doświadczenia w międzynarodowych transakcjach."
-                    imageUrl="./anna_kowalska.jpg" 
-                    altText="Portret Anny Kowalskiej, Radcy Prawnego, Partnera"
+                    name="Łukasz Sankiewicz"
+                    title="Ekspert prawa restrukturyzacyjnego."
+                    description="Od 2000 r. przedsiębiorca, ekspert ds. restrukturyzacji i upadłości. Pomaga firmom, tworzy sieci, wdraża innowacje."
+                    imageUrl="/images/lukasz.png"
+                    altText="Portret Łukasza Sankiewicza, Radcy Prawnego, Partnera"
                 />
 
                 <GsapTeamMemberCard
-                    name="Piotr Nowak"
-                    title="Adwokat / Senior Associate"
-                    description="Ekspert od postępowań sądowych i arbitrażowych, zwłaszcza w sprawach z zakresu prawa cywilnego i budowlanego."
-                    imageUrl="./piotr_nowak.jpg" 
-                    altText="Portret Piotra Nowaka, Adwokata, Senior Associate"
+                    name="Kamil Góra"
+                    title="Ekspert prawa restrukturyzacyjnego "
+                    description="Ekspert prawny specjalizuje się w restrukturyzacji. Łączy wiedzę z innowacją i empatią, budując zaufanie.."
+                    imageUrl="/images/kamil.png"
+                    altText="Portret Kamila Góry, Adwokata, Senior Associate"
                 />
 
                 <GsapTeamMemberCard
-                    name="Magdalena Wiśniewska"
-                    title="Prawnik / Doradca"
-                    description="Koncentruje się na prawie pracy i ochronie danych osobowych (RODO). Zawsze dba o zgodność z najnowszymi regulacjami."
-                    imageUrl="./magdalena_wisniewska.jpg" 
-                    altText="Portret Magdaleny Wiśniewskiej, Prawnika i Doradcy"
+                    name="Łukasz Urbanek"
+                    title="Specjalista ds. restrukturyzacji"
+                    description="Artysta, świetny w relacjach, inspiruje, wyczuwa blokady. Zasadniczy, budzi zaufanie. Gitarzysta"
+                    imageUrl="/images/urbanek.png"
+                    altText="Portret Łukasz Urbanka, Prawnika i Doradcy"
                 />
             </div>
         </section>
