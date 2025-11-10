@@ -26,7 +26,7 @@ const ContactInfoItem: React.FC<ContactInfoItemProps> = ({ Icon, text, link }) =
 export default function Contact() {
     const contactDetails = [
         { Icon: Phone, text: "+48 793 055 911", link: "tel:+48793055911" },
-        { Icon: Mail, text: "kontakt@cncg.pl", link: "mailto:kontakt@cncg.pl" },
+        { Icon: Mail, text: "kontakt@narodowyprogramoddluzan.pl", link: "mailto:kontakt@narodowyprogramoddluzan.pl" },
         { Icon: MapPin, text: "ul. Witosa 3A lok. 9 18-500, Kolno", link: "https://www.google.com/maps?ll=53.410811,21.923202&z=13&t=m&hl=pl-PL&gl=US&mapclient=embed&q=ul.+Wincentego+Witosa+3A+lok.+9+18-500,+Kolno" }, 
     ];
 
@@ -64,7 +64,7 @@ export default function Contact() {
 
             <div className="lg:w-2/3 p-6 lg:p-10 shadow-xl rounded-xl">
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">Wyślij wiadomość</h2>
-                <form action="https://formspree.io/f/xblzqwdy" method="POST" className="space-y-5">
+                <form action="https://formspree.io/f/mblpnndb" method="POST" className="space-y-5">
                     
                     <label className="block">
                         <span className="text-gray-700 font-medium block mb-1">E-mail:</span>

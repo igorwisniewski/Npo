@@ -1,7 +1,6 @@
 // App.jsx (Główny Plik)
 import React from 'react';
 // Importowanie ikon
-import { Briefcase, Gavel, TrendingUp } from 'lucide-react';
 
 // Importowanie wydzielonych komponentów
 import HeroSection from './components/HeroSection';

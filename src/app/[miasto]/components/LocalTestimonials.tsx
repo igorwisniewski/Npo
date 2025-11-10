@@ -55,7 +55,7 @@ export default function LocalTestimonials({ studies, cityNameGenitive }: LocalTe
                         <div key={study.id} className="bg-gray-50 p-8 rounded-2xl shadow-lg flex flex-col h-full">
                             <StarRating />
                             <p className="text-base text-gray-700 my-4 flex-grow italic">
-                                "{study.description}"
+                                &quot;{study.description}&quot;
                             </p>
                             <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-200">
                                 <UserCircleIcon className="h-6 w-6 text-red-700" />

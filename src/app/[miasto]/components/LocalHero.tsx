@@ -14,7 +14,7 @@ export default function LocalHero({ title, description }: LocalHeroProps) {
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             // Animacja wjazdu dla tekstu
-            // @ts-ignore
+            //@ts-expect-error eror
             gsap.from(heroRef.current.children, {
                 opacity: 0,
                 y: 20,

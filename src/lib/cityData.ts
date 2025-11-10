@@ -1,4 +1,3 @@
-import { Scale, GraduationCap, Percent } from 'lucide-react';
 
 // --- DEFINICJA TYPÓW DANYCH ---
 interface FaqItem {

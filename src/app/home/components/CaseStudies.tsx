@@ -1,7 +1,7 @@
 "use client";
 
 // 1. Dodano 'useLayoutEffect' do importu
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import React, {useState, useRef, useEffect, useLayoutEffect, useCallback} from 'react';
 import { ArrowLeftIcon, ArrowRightIcon, CheckBadgeIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
 // 2. Usunięto 'useGSAP'
@@ -77,16 +77,19 @@ export default function CaseStudies() {
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
 
-    // Logika slidera (bez zmian)
+// Logika slidera
     const step = typeof window !== 'undefined' && window.innerWidth >= 768 ? 2 : 1;
     const numPages = Math.ceil(caseStudiesData.length / step);
 
-    const handleNext = () => {
+// 1. Używamy useCallback do memoizacji funkcji
+//    Dodajemy wszystkie wartości (props, state, zmienne),
+//    których funkcja używa do odczytu.
+    const handleNext = useCallback(() => {
         const nextIndex = currentIndex + step;
         setCurrentIndex(nextIndex >= caseStudiesData.length ? 0 : nextIndex);
-    };
+    }, [currentIndex]); // <-- Zależności dla handleNext
 
-    const handlePrev = () => {
+    const handlePrev = useCallback(() => {
         let prevIndex = currentIndex - step;
         if (prevIndex < 0) {
             prevIndex = (numPages - 1) * step;
@@ -95,22 +98,31 @@ export default function CaseStudies() {
             }
         }
         setCurrentIndex(prevIndex);
-    };
+    }, [currentIndex, numPages]); // <-- Zależności dla handlePrev
 
-    const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.targetTouches[0].clientX; };
-    const handleTouchMove = (e: React.TouchEvent) => { touchEndX.current = e.targetTouches[0].clientX; };
-    const handleTouchEnd = () => {
+// Handlery dotyku również opakowujemy, aby były stabilne
+    const handleTouchStart = useCallback((e: React.TouchEvent) => {
+        touchStartX.current = e.targetTouches[0].clientX;
+    }, []); // Pusta tablica, bo nie ma zależności
+
+    const handleTouchMove = useCallback((e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+    }, []); // Pusta tablica
+
+    const handleTouchEnd = useCallback(() => {
         if (touchStartX.current - touchEndX.current > 75) handleNext();
         if (touchStartX.current - touchEndX.current < -75) handlePrev();
-    };
+    }, [handleNext, handlePrev]); // <-- Ten handler zależy od innych memoizowanych handlerów
 
-    // Timer autoplay (bez zmian)
+// 2. Aktualizujemy useEffect dla timera
     useEffect(() => {
-        const timer = setInterval(() => { handleNext(); }, 7000);
+        const timer = setInterval(() => {
+            handleNext();
+        }, 7000);
         return () => clearInterval(timer);
-    }, [currentIndex]);
+    }, [handleNext]); // <-- Zmieniono z [currentIndex] na [handleNext]
 
-    // 3. Zastąpiono useGSAP przez useLayoutEffect + gsap.context
+// useLayoutEffect dla GSAP (bez zmian)
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({
@@ -118,12 +130,10 @@ export default function CaseStudies() {
             });
             tl.from(".animate-casestudy-header", { opacity: 0, y: 40, duration: 0.6, stagger: 0.2 })
                 .from(".animate-slider-body", { opacity: 0, y: 50, duration: 0.8, ease: 'power3.out' }, "-=0.4");
-        }, container); // Scope przekazany do contextu
+        }, container);
 
-        // 4. Dodano funkcję czyszczącą
         return () => ctx.revert();
-    }, []); // Pusta tablica zależności
-
+    }, []);
     return (
         <section ref={container} className="bg-slate-50 py-8 sm:py-8 mb-10">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">

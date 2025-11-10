@@ -83,7 +83,7 @@ export default function SzczegolowyFormularz() {
         e.preventDefault();
         setSubmissionStatus('submitting');
         try {
-            const response = await fetch('https://formspree.io/f/mnnbwnlq', {
+            const response = await fetch('https://formspree.io/f/xnnoeejy', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
@@ -127,7 +127,7 @@ export default function SzczegolowyFormularz() {
     if (submissionStatus === 'success') { /* ... bez zmian ... */
         return (
             <div className="w-full max-w-2xl mx-auto p-8 text-center bg-white rounded-xl shadow-lg min-h-[80vh] content-center">
-                <h3 className="text-3xl font-bold text-green-500">Dziękujemy!</h3>
+                <h3 className="text-3xl font-bold text-red-500">Dziękujemy!</h3>
                 <p className="mt-4 text-slate-700 text-lg">Twoje zgłoszenie zostało pomyślnie wysłane. Wkrótce się z Tobą skontaktujemy.</p>
             </div>
         );
@@ -238,7 +238,7 @@ export default function SzczegolowyFormularz() {
                         <button
                             type="submit"
                             disabled={!isStep2Valid || submissionStatus === 'submitting'}
-                            className="px-12 py-4 bg-green-600 font-bold text-white text-xl rounded-lg hover:bg-green-700 transition-colors shadow-lg shadow-green-900/30 disabled:bg-slate-400 disabled:cursor-not-allowed w-full sm:w-auto"
+                            className="px-12 py-4 bg-red-600 font-bold text-white text-xl rounded-lg hover:bg-red-700 transition-colors shadow-lg shadow-red-900/30 disabled:bg-slate-400 disabled:cursor-not-allowed w-full sm:w-auto"
                         >
                             {submissionStatus === 'submitting' ? 'Wysyłanie...' : 'Wyślij i czekaj na kontakt'}
                         </button>

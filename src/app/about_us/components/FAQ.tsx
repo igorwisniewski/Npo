@@ -90,11 +90,10 @@ const faqData = [
         answer: "Tak, ale obowiązują okresy karencji. Kolejny wniosek można złożyć zazwyczaj po 10 latach."
     }
 ];
-// @ts-ignore
 /**
  * Komponent wewnętrzny dla pojedynczego elementu FAQ (Akordeon)
- */// @ts-ignore
-
+ */
+//@ts-expect-error eror
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
     const answerRef = useRef(null);
     const iconRef = useRef(null);
@@ -106,7 +105,7 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
         gsap.set(answerRef.current, { height: 0, opacity: 0, paddingBottom: 0 });
 
         // Tworzymy timeline GSAP dla animacji otwierania/zamykania
-        // @ts-ignore
+        //@ts-expect-error eror
         tlRef.current = gsap.timeline({ paused: true })
             .to(answerRef.current, {
                 height: 'auto',
@@ -126,10 +125,10 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
     // Używamy useEffect do odtwarzania lub odwracania animacji
     useEffect(() => {
         if (isOpen) {
-            // @ts-ignore
+            //@ts-expect-error eror
             tlRef.current.play();
         } else {
-            // @ts-ignore
+            //@ts-expect-error eror
             tlRef.current.reverse();
         }
     }, [isOpen]);
@@ -201,7 +200,7 @@ export default function FaqSection() {
 
     const handleItemClick = (index: number | React.SetStateAction<null>) => {
         // Pozwala na zamykanie otwartego już elementu
-        // @ts-ignore
+        //@ts-expect-error eror
         setOpenIndex(openIndex === index ? null : index);
     };
 

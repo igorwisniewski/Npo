@@ -19,7 +19,7 @@ export default function MissionValuesSection() {
         const ctx = gsap.context(() => {
             // 1. Animacja dla kolumny tekstowej (wjazd z dołu)
             // Celujemy w dzieci kontenera, aby animowały się jedno po drugim
-            // @ts-ignore
+            //@ts-expect-error eror
             gsap.from(textRef.current.children, {
                 opacity: 0,
                 y: 30, // Przesunięcie z dołu

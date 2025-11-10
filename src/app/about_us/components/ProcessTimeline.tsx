@@ -37,7 +37,7 @@ export default function ProcessTimeline() {
             const items = gsap.utils.toArray('.timeline-item');
 
             // Poprawiono błąd TypeScript: 'item: never' -> 'item: Element'
-            // @ts-ignore
+            //@ts-expect-error eror
             items.forEach((item: Element) => {
                 gsap.from(item, {
                     scrollTrigger: {
