@@ -37,7 +37,7 @@ export default function Contact() {
     ];
 
     return (
-        <div className="flex flex-col sm:flex-col-reverse lg:flex-row w-full max-w-6xl gap-8 mx-auto my-12 p-6 bg-white">
+        <div className="flex flex-col sm:flex-col-reverse lg:flex-row w-full max-w-7xl gap-8 mx-auto my-12 p-6 bg-white">
             <div className="lg:w-1/3 p-6 lg:p-10 bg-red-800 rounded-xl shadow-xl ">
                 <h2 className="text-3xl font-bold text-gray-50 mb-8 border-b pb-2">Skontaktuj się z nami</h2>
                 
@@ -62,7 +62,7 @@ export default function Contact() {
 
             </div>
 
-            <div className="lg:w-2/3 p-6 lg:p-10 shadow-xl rounded-xl">
+            <div className="lg:w-3/4 p-6 lg:p-10 shadow-xl rounded-xl">
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">Wyślij wiadomość</h2>
                 <form action="https://formspree.io/f/mblpnndb" method="POST" className="space-y-5">
                     
