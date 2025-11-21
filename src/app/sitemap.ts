@@ -8,7 +8,7 @@ const CITIES = [
     'czestochowa', 'radom', 'sosnowiec', 'torun', 'kielce', 'rzeszow',
     'gliwice', 'zabrze', 'olsztyn', 'bielsko-biala', 'bytom'
 ];
-const BASE_URL = 'https://twoja-domena.pl'; // Zmień na właściwy URL
+const BASE_URL = 'narodowyprogramoddluzan.pl'; // Zmień na właściwy URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const blogPosts = getSortedPostsData('blog').map((post) => ({
