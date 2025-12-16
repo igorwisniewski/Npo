@@ -27,7 +27,6 @@ export default function AboutUs() {
             <MissionValuesSection />
 
             {/* SEKCJA 3: NASZE OSIĄGNIĘCIA */}
-            <ProcessTimeline/>
 
 
 
