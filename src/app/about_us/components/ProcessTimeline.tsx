@@ -6,12 +6,33 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-    { no: '1', name: 'Złożenie wniosku – nawet w 24h', description: 'Gdy tylko otrzymamy od Ciebie pełną dokumentację, przygotowujemy kompletny wniosek o ogłoszenie upadłości. W większości przypadków jesteśmy w stanie złożyć go do sądu w ciągu 24 godzin.' },
-    { no: '2', name: 'Postanowienie sądu – nawet w 48h od złożenia wniosku', description: 'Sąd analizuje dokumenty i może ogłosić Twoją upadłość nawet w ciągu dwóch dni. Od tej chwili oficjalnie zaczyna się proces' },
-    { no: '3', name: 'Działania syndyka – bez stresu i wizyt', description: 'Syndyk przejmuje zarządzanie tzw. masą upadłości i analizuje Twoją sytuację. W 99% przypadków cały kontakt z syndykiem odbywa się wyłącznie drogą korespondencyjną ' },
-    { no: '4', name: 'Plan spłaty – dopasowany do Ciebie', description: 'Sąd ustala plan spłaty wierzycieli, biorąc pod uwagę Twoje aktualne możliwości finansowe. To nie kara – to uczciwy kompromis, który pozwala Ci wywiązać się z zobowiązań na miarę Twoich sił.' },
-    { no: '5', name: ' Umorzenie zobowiązań – zaczynasz nowy rozdział', description: 'Po wykonaniu planu spłaty, pozostałe długi zostają prawomocnie umorzone. Budzisz się ze spokojem. Nie masz już żadnych długów. Jesteś wolnym człowiekiem. Gotowy na nowe życie.' },
+    {
+        no: '1',
+        name: 'Przygotowanie i złożenie wniosku – nawet w 24 godziny',
+        description: 'Po otrzymaniu kompletu wymaganych dokumentów niezwłocznie opracowujemy wniosek o ogłoszenie upadłości. W większości spraw trafia on do sądu już w ciągu jednej doby.'
+    },
+    {
+        no: '2',
+        name: 'Decyzja sądu – nawet 48 godzin od złożenia',
+        description: 'Sąd weryfikuje dokumentację i może wydać postanowienie o ogłoszeniu upadłości nawet w ciągu dwóch dni. Od tego momentu procedura formalnie rusza.'
+    },
+    {
+        no: '3',
+        name: 'Postępowanie syndyka – spokojnie i zdalnie',
+        description: 'Syndyk obejmuje nadzór nad masą upadłości i ocenia Twoją sytuację finansową. W zdecydowanej większości przypadków kontakt odbywa się wyłącznie listownie, bez osobistych spotkań.'
+    },
+    {
+        no: '4',
+        name: 'Ustalenie planu spłat – dostosowanego do Twoich możliwości',
+        description: 'Sąd określa warunki spłaty wierzycieli, uwzględniając Twoje realne dochody i koszty życia. To rozwiązanie, które ma być wykonalne i sprawiedliwe – nie represyjne.'
+    },
+    {
+        no: '5',
+        name: 'Umorzenie długów – nowy start',
+        description: 'Po zrealizowaniu planu spłaty pozostałe zobowiązania zostają trwale umorzone. Odzyskujesz spokój, finansową wolność i możliwość rozpoczęcia nowego etapu życia bez długów.'
+    },
 ];
+
 
 export default function ProcessTimeline() {
     const container = useRef(null);

@@ -14,7 +14,7 @@ export default function Footer() {
                     <ul className="space-y-1 text-sm">
                         <li><Link href="/" className="hover:underline">Strona główna</Link></li>
                         <li><Link href="/blog" className="hover:underline">Blog</Link></li>
-                        <li><Link href="/kontakt" className="hover:underline">Kontakt</Link></li>
+                        <li><Link href="/contakt" className="hover:underline">Kontakt</Link></li>
                         <li><Link href="/polityka-prywatnosci" className="hover:underline">Polityka Prywatności</Link>
                         </li>
 

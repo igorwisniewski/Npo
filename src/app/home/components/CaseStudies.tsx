@@ -12,64 +12,62 @@ import DonutChart from "@/app/home/components/donutChart";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Dane caseStudiesData (bez zmian)
 const caseStudiesData = [
     {
         id: 1,
-        debtAmount: '96 tys.',
+        debtAmount: '115 tys.',
         remissionPercentage: 100,
-        remissionAmount: '96 000 zł',
+        remissionAmount: '115 000 zł',
         repaymentPlan: 'brak planu spłaty',
-        description: 'Po rozwodzie klientka została z długami zaciągniętymi wspólnie z byłym partnerem. Wychowując dwójkę dzieci bez stałej pracy, nie miała szans na regulowanie zobowiązań. Wniosek został pozytywnie rozpatrzony — sąd ogłosił upadłość i całkowicie umorzył jej długi.',
-        client: 'Pani Gosia, 41 lat, Wrocław'
+        description: 'Klientka po burzliwym rozstaniu została z kredytami konsumpcyjnymi, które brała na remont mieszkania partnera. Samotne wychowywanie trójki dzieci i praca na pół etatu uniemożliwiały spłatę. Sąd uznał jej trudną sytuację i umorzył całość długu bez ustalania rat.',
+        client: 'Pani Anna, 38 lat, Łódź'
     },
     {
         id: 2,
-        debtAmount: '142 tys.',
-        remissionPercentage: 91,
-        remissionAmount: '129 220 zł',
-        repaymentPlan: '355 zł / 30 m-cy',
-        description: 'Klient, emeryt z Warszawy, miał zajętą część świadczenia. Zadłużenie rosło latami. Po naszej analizie, sąd ogłosił upadłość i zatwierdził plan spłaty możliwy do wykonania przy jego dochodach. Klient odzyskał kontrolę nad budżetem i życiem.',
-        client: 'Pan Marian, 68 lat, Warszawa'
+        debtAmount: '89 tys.',
+        remissionPercentage: 92,
+        remissionAmount: '81 800 zł',
+        repaymentPlan: '300 zł / 24 m-ce',
+        description: 'Emeryt wpadł w pętlę kredytową, próbując pomóc finansowo rodzinie. Komornik zajmował znaczną część jego emerytury. Dzięki upadłości wstrzymano egzekucję, a sąd ustalił niską ratę, którą senior jest w stanie spłacać bez wyrzeczeń.',
+        client: 'Pan Tadeusz, 71 lat, Bydgoszcz'
     },
     {
         id: 3,
-        debtAmount: '67 tys.',
+        debtAmount: '54 tys.',
         remissionPercentage: 100,
-        remissionAmount: '67 000 zł',
+        remissionAmount: '54 000 zł',
         repaymentPlan: 'brak planu spłaty',
-        description: 'Zadłużenie narastało latami, kiedy klientka leczyła się psychiatrycznie. Wpadła w spiralę chwilówek. Udało się zebrać dokumentację potwierdzającą jej stan. Sąd ogłosił upadłość i umorzył całość długu.',
-        client: 'Pani Ewa, 52 lata, Gdańsk'
+        description: 'Przewlekła choroba uniemożliwiła klientce wykonywanie zawodu, co doprowadziło do zaciągania "chwilówek" na leki i życie. Przedstawiliśmy w sądzie pełną dokumentację medyczną. Sąd odstąpił od ustalania planu spłaty i oddłużył klientkę w 100%.',
+        client: 'Pani Katarzyna, 45 lat, Szczecin'
     },
     {
         id: 4,
-        debtAmount: '290 tys.',
-        remissionPercentage: 90,
-        remissionAmount: '261 200 zł',
-        repaymentPlan: '800 zł / 36 m-cy',
-        description: 'Klient po pandemii musiał zamknąć działalność gospodarczą. Został z niespłaconymi leasingami. Sąd zatwierdził plan spłaty dostosowany do nowych dochodów klienta. Udało się umorzyć ponad 260 tys. zł.',
-        client: 'Pan Marcin, 39 lat, Kraków'
+        debtAmount: '310 tys.',
+        remissionPercentage: 92,
+        remissionAmount: '284 800 zł',
+        repaymentPlan: '700 zł / 36 m-cy',
+        description: 'Klient prowadził firmę transportową, która upadła przez wzrost cen paliw i brak zleceń. Został z niespłaconymi leasingami. Obecnie pracuje na etacie. Sąd zgodził się na plan spłaty dostosowany do jego pensji kierowcy, umarzając większość długu.',
+        client: 'Pan Tomasz, 42 lata, Gdynia'
     },
     {
         id: 5,
-        debtAmount: '158 tys.',
-        remissionPercentage: 95,
-        remissionAmount: '150 800 zł',
-        repaymentPlan: '300 zł / 24 m-ce',
-        description: 'Młody przedsiębiorca prowadził sklep internetowy, ale po wzroście kosztów musiał zamknąć firmę. Przez rok bezskutecznie próbował dogadać się z wierzycielami. Sąd przyznał symboliczną ratę i umorzył niemal całość zadłużenia.',
-        client: 'Pan Adam, 29 lat, Poznań'
+        debtAmount: '185 tys.',
+        remissionPercentage: 96,
+        remissionAmount: '177 800 zł',
+        repaymentPlan: '200 zł / 36 m-cy',
+        description: 'Nieudany start-up technologiczny wpędził młodego programistę w długi. Przez stres związany z windykacją nie mógł efektywnie pracować. Sąd przychylił się do wniosku o upadłość, ustalając symboliczną ratę, co pozwoliło klientowi wrócić do równowagi.',
+        client: 'Pan Krystian, 31 lat, Rzeszów'
     },
     {
         id: 6,
-        debtAmount: '460 tys.',
+        debtAmount: '520 tys.',
         remissionPercentage: 93,
-        remissionAmount: '427 600 zł',
-        repaymentPlan: '900 zł / 36 m-cy',
-        description: 'Po upadku rodzinnej hurtowni klient pozostał z wysokimi kredytami. Współpraca z nami pozwoliła przejść przez procedurę bez utraty mieszkania i z mocnym oddechem finansowym.',
-        client: 'Pan Jacek, 55 lat, Katowice'
+        remissionAmount: '484 000 zł',
+        repaymentPlan: '1000 zł / 36 m-cy',
+        description: 'Klient po zamknięciu dużej firmy budowlanej został z ogromnymi zobowiązaniami bankowymi. Groziła mu utrata domu rodzinnego. Skuteczna strategia pozwoliła zachować nieruchomość i zredukować dług o prawie pół miliona złotych.',
+        client: 'Pan Marek, 58 lat, Lublin'
     },
 ];
-
 
 export default function CaseStudies() {
     const [currentIndex, setCurrentIndex] = useState(0);
