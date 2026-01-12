@@ -25,8 +25,8 @@ const ContactInfoItem: React.FC<ContactInfoItemProps> = ({ Icon, text, link }) =
 
 export default function Contact() {
     const contactDetails = [
-        { Icon: Phone, text: "+48 793 055 911", link: "tel:+48793055911" },
-        { Icon: Mail, text: "kontakt@narodowyprogramoddluzan.pl", link: "mailto:kontakt@narodowyprogramoddluzan.pl" },
+        { Icon: Phone, text: "+48 780 712 764", link: "tel:+48780712764" },
+        { Icon: Mail, text: "kontakt@narodowyprogramoddluzen.pl", link: "mailto:kontakt@narodowyprogramoddluzen.pl" },
         { Icon: MapPin, text: "ul. Witosa 3A lok. 9 18-500, Kolno", link: "https://www.google.com/maps?ll=53.410811,21.923202&z=13&t=m&hl=pl-PL&gl=US&mapclient=embed&q=ul.+Wincentego+Witosa+3A+lok.+9+18-500,+Kolno" }, 
     ];
 
