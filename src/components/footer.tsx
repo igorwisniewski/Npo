@@ -23,7 +23,7 @@ export default function Footer() {
 
                 <div>
                     <h4 className="font-semibold mb-2">Kontakt</h4>
-                    <p className="text-sm">tel: +48 780 712 764 <br />email: kontakt@narodowyprogramoddluzan.pl</p>
+                    <p className="text-sm">tel: +48 780 712 764 <br />email: kontakt@narodowyprogramoddluzen.pl</p>
                 </div>
             </div>
             <div className="text-center mt-8 text-xs text-gray-400">&copy; 2025 NPO. Wszelkie prawa zastrzeżone. Stworzone przez <Link href={"https://wisstack.pl/"}>WISSTACK</Link></div>
