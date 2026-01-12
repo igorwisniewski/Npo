@@ -165,7 +165,7 @@ export default function SolutionsSection() {
                                     frontCardProps={{
                                         icon: CircleDollarSign,
                                         title: "Umorzenie długu",
-                                        description: "Pomorze ci, ponownie wstać na nogi, zacząć nowy rozdział"
+                                        description: "pomoże  ci, ponownie wstać na nogi, zacząć nowy rozdział"
                                     }}
                                     backCardProps={backCardProps}
                                 />
@@ -173,7 +173,7 @@ export default function SolutionsSection() {
                                     frontCardProps={{
                                         icon: CircleMinus,
                                         title: "Zmniejszenie należności",
-                                        description: "Pomorze ci, zmniejszyć ten ciężar długu czasami nawet o 3/4"
+                                        description: "pomoże  ci, zmniejszyć ten ciężar długu czasami nawet o 3/4"
                                     }}
                                     backCardProps={backCardProps}
                                 />
@@ -184,7 +184,7 @@ export default function SolutionsSection() {
                                     frontCardProps={{
                                         icon: Landmark,
                                         title: "Odroczenie spłat",
-                                        description: "Pomorze ci, zmniejszyć ten ciężar długu czasami nawet o 3/4"
+                                        description: "pomoże  ci, zmniejszyć ten ciężar długu czasami nawet o 3/4"
                                     }}
                                     backCardProps={backCardProps}
                                 />
