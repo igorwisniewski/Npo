@@ -65,34 +65,43 @@ export default function Contact() {
             <div className="lg:w-3/4 p-6 lg:p-10 shadow-xl rounded-xl">
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">Wyślij wiadomość</h2>
                 <form action="https://formspree.io/f/mblpnndb" method="POST" className="space-y-5">
-                    
-                    <label className="block">
-                        <span className="text-gray-700 font-medium block mb-1">E-mail:</span>
-                        <input 
-                            type="email" 
-                            name="email" 
-                            required
-                            placeholder="Twój adres e-mail"
-                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border" 
-                        />
-                    </label>
 
                     <label className="block">
+                        <span className="text-gray-700 font-medium block mb-1">E-mail:</span>
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            placeholder="Twój adres e-mail"
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border"
+                        />
+                    </label>
+                    <label className="block">
+                        <span className="text-gray-700 font-medium block mb-1">Telefon:</span>
+                        <input
+                            type="text"
+                            name="Telefon"
+                            required
+                            placeholder="+48 123 456 789"
+                            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border"
+                        />
+                    </label>
+                    <label className="block">
                         <span className="text-gray-700 font-medium block mb-1">Imię:</span>
-                        <input 
-                            type="text" 
-                            name="name" 
+                        <input
+                            type="text"
+                            name="name"
                             required
                             placeholder="Twoje imię"
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 p-3 border"
                         />
                     </label>
-                    
+
                     <label className="block">
                         <span className="text-gray-700 font-medium block mb-1">Wiadomość:</span>
-                        <textarea 
-                            name="message" 
-                            rows={6} 
+                        <textarea
+                            name="message"
+                            rows={6}
                             required
                             placeholder="Treść Twojej wiadomości..."
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 p-3 border"
@@ -100,16 +109,16 @@ export default function Contact() {
                     </label>
 
                     <label className="flex items-center space-x-3 cursor-pointer pt-2">
-                        <input 
-                            type='checkbox' 
-                            name="property" 
+                        <input
+                            type='checkbox'
+                            name="property"
                             className="h-5 w-5 rounded border-red-800
                accent-red-800 focus:ring-red-800"
                         />
                         <span className="text-gray-700 font-medium">Posiadam nieruchomość</span>
                     </label>
 
-                    <button 
+                    <button
                         type="submit"
                         className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-red-700 hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 transition duration-300 ease-in-out mt-6"
                     >
