@@ -2,7 +2,6 @@
 import React from 'react';
 import HeroSection from './components/hero';
 import MissionValuesSection from './components/missionValues';
-import TeamSection from './components/TeamSection';
 import AchievementsSection from './components/Achievements';
 import ProcessTimeline from "@/app/about_us/components/ProcessTimeline";
 import FaqSection from "@/app/about_us/components/FAQ";
@@ -30,8 +29,7 @@ export default function AboutUs() {
 
 
 
-            {/* SEKCJA 5: POZNAJ NASZĄ EKIPĘ */}
-            <TeamSection />
+
             <AchievementsSection />
             <FaqSection />
             <DebtCalculator/>
