@@ -81,15 +81,7 @@ export default function MissionValuesSection() {
                     {/* Prawa Kolumna: Obraz (zgodny ze starym plikiem /public/person.webp) */}
                     <div ref={imageRef} className="w-full flex justify-center lg:justify-end">
                         {/* Używamy obrazu /person.webp, który już masz w projekcie */}
-                        <div className="relative w-[320px] h-[480px] sm:w-[400px] sm:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                            <Image
-                                src="/images/history.jpg"
-                                alt="Kamil Góra NPO"
-                                layout="fill"
-                                objectFit="cover"
-                                className="transition-transform duration-500 ease-out hover:scale-105"
-                            />
-                        </div>
+
                     </div>
                 </div>
             </div>

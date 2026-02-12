@@ -63,7 +63,7 @@ const statsData = [
 const HomeSection = () => {
     // Ścieżki do obrazów używanych w sekcji Hero i O Nas.
     // UWAGA: W środowisku produkcyjnym ścieżki mogą wymagać poprawienia (np. użycia funkcji importu w Webpacku/Vite).
-    const specialistImageSrc = "/images/kamilheader.png";
+
     const officeImageSrc = "/images/mainabout.png ";
 
     return (
@@ -71,7 +71,7 @@ const HomeSection = () => {
         <div className="font-sans">
 
             {/* Sekcja 1: Hero (nagłówek) */}
-            <HeroSection specialistImageSrc={specialistImageSrc} />
+            <HeroSection  />
 
             {/* Sekcja 2: Statystyki i Wyniki */}
             <StatsSection statsData={statsData} />

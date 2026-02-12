@@ -8,10 +8,8 @@ import Link from 'next/link';
 
 /**
  * Komponent HeroSection (Nagłówek) z animacjami GSAP.
- * @param {object} props - Właściwości komponentu.
- * @param {string} props.specialistImageSrc - Ścieżka do obrazka specjalisty.
  */
-const HeroSection = ({ specialistImageSrc }) => {
+const HeroSection = () => {
     // Referencje do elementów DOM, które będziemy animować
     const textContainerRef = useRef(null);
     const imageRef = useRef(null);
@@ -128,13 +126,7 @@ const HeroSection = ({ specialistImageSrc }) => {
                             <div
                                 className="w-full h-full hidden items-center justify-center text-gray-500 text-sm rounded-3xl lg:flex"
                             >
-                                <StandardImage
-                                    src={specialistImageSrc}
-                                    alt="Portret specjalisty"
-                                    // Przywróciłem te propy z Twojego pliku, są kluczowe dla layoutu
 
-                                    className="object-cover"
-                                />
                             </div>
                         </div>
                     </div>
