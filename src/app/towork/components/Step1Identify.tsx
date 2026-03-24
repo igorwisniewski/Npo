@@ -89,7 +89,7 @@ export default function Step1Identify({ onNext, onPrev, colorScheme = 'red' }: S
 
     const fields = getFields();
     const currentField = fields[currentIndex];
-    const currentVal = useWatch({ control, name: currentField?.id as any });
+    const currentVal = useWatch({ control, name: currentField?.id as keyof AnkietaFormData });
 
     const validateField = (id: string, value: string) => {
         if (!value) return false;
@@ -115,7 +115,7 @@ export default function Step1Identify({ onNext, onPrev, colorScheme = 'red' }: S
     const handleNextField = async () => {
         const val = currentVal;
 
-        if (!validateField(currentField.id, val)) {
+        if (!validateField(currentField.id, String(val || ''))) {
             alert(`Proszę podać poprawne dane w polu: ${currentField.label}`);
             return;
         }
@@ -150,7 +150,7 @@ export default function Step1Identify({ onNext, onPrev, colorScheme = 'red' }: S
                             key={opt.value}
                             type="button"
                             onClick={() => {
-                                setValue(currentField.id, opt.value as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+                                setValue(currentField.id, opt.value as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
                             }}
                             className={`p-6 border rounded-2xl transition-all duration-200 text-center hover:-translate-y-1 hover:shadow-lg active:scale-95
                                 ${val === opt.value

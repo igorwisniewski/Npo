@@ -15,7 +15,6 @@ export default function Step4Upload({ onNext, colorScheme = 'red' }: Step4Upload
     const theme = getThemeClasses(colorScheme);
     const { watch } = useFormContext<AnkietaFormData>();
     const clientType = watch('clientType');
-    const farmForm = watch('farmForm');
     const submissionId = watch('submissionId') || 'unknown';
 
     const [uploadingDoc, setUploadingDoc] = useState<string | null>(null);
@@ -84,7 +83,7 @@ export default function Step4Upload({ onNext, colorScheme = 'red' }: Step4Upload
             const fileExt = file.name.split('.').pop();
             const fileName = `${submissionId}/${docName.replace(/\W+/g, '_')}_${Date.now()}.${fileExt}`;
 
-            const { data, error } = await supabase.storage
+            const { error } = await supabase.storage
                 .from('iwp')
                 .upload(fileName, file);
 
@@ -95,9 +94,10 @@ export default function Step4Upload({ onNext, colorScheme = 'red' }: Step4Upload
             }
 
             setUploadedDocs(prev => ({ ...prev, [docName]: true }));
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error(error);
-            setUploadError(error.message || 'Wystąpił nieoczekiwany błąd podczas przesyłania.');
+            const msg = error instanceof Error ? error.message : 'Wystąpił nieoczekiwany błąd podczas przesyłania.';
+            setUploadError(msg);
         } finally {
             setUploadingDoc(null);
         }

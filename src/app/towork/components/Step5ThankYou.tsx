@@ -2,13 +2,14 @@
 
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { ColorScheme } from '../types';
 
 interface Step5ThankYouProps {
     colorScheme?: ColorScheme;
 }
 
-export default function Step5ThankYou({ colorScheme = 'red' }: Step5ThankYouProps) {
+export default function Step5ThankYou({}: Step5ThankYouProps) {
     // Kiedy użytkownik trafia na podziękowanie, formularz jest gotowy - można usunąć cookies (żeby nie odtwarzało wypełnionego).
     useEffect(() => {
         Cookies.remove('ankieta_form_data');
@@ -30,9 +31,9 @@ export default function Step5ThankYou({ colorScheme = 'red' }: Step5ThankYouProp
                 Twój opiekun prawny otrzymał dane. Po przeanalizowaniu dokumentów skontaktujemy się w celu omówienia możliwych rozwiązań.
             </p>
             
-            <a href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 shadow-sm transition-colors">
+            <Link href="/" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800 shadow-sm transition-colors">
                 Wróć na stronę główną
-            </a>
+            </Link>
         </div>
     );
 }

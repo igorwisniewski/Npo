@@ -107,7 +107,7 @@ export default function Step3Debt({ onNext, onPrev, colorScheme = 'red' }: Step3
             }
 
             onNext();
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error(err);
             onNext();
         } finally {
@@ -140,7 +140,7 @@ export default function Step3Debt({ onNext, onPrev, colorScheme = 'red' }: Step3
     };
 
     const getFields = (): FieldConfig[] => {
-        let fields: FieldConfig[] = [];
+        const fields: FieldConfig[] = [];
 
         // 1. Zobowiązania - zaktualizowany tekst i obsługa opcji "Inne"
         fields.push({
@@ -241,7 +241,7 @@ export default function Step3Debt({ onNext, onPrev, colorScheme = 'red' }: Step3
     const safeIndex = Math.min(currentIndex, fields.length > 0 ? fields.length - 1 : 0);
     const currentField = fields[safeIndex];
     const isLastField = safeIndex === fields.length - 1;
-    const currentVal = useWatch({ control, name: currentField?.id as any });
+    const currentVal = useWatch({ control, name: currentField?.id as keyof AnkietaFormData });
 
     const handleCheckboxToggle = (v: string) => {
         const currentVals = (getValues(currentField.id as keyof AnkietaFormData) as string[]) || [];
@@ -251,7 +251,7 @@ export default function Step3Debt({ onNext, onPrev, colorScheme = 'red' }: Step3
         } else {
             newVals.push(v);
         }
-        setValue(currentField.id, newVals as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+        setValue(currentField.id, newVals as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
     };
 
     const handleNextField = async () => {
@@ -284,7 +284,7 @@ export default function Step3Debt({ onNext, onPrev, colorScheme = 'red' }: Step3
                             key={opt.value}
                             type="button"
                             onClick={() => {
-                                setValue(currentField.id, opt.value as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+                                setValue(currentField.id, opt.value as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
                             }}
                             className={`p-6 border rounded-2xl transition-all duration-200 text-center hover:-translate-y-1 hover:shadow-lg active:scale-95
                                 ${val === opt.value

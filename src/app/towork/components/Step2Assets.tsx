@@ -36,7 +36,7 @@ export default function Step2Assets({ onNext, onPrev, colorScheme = 'red' }: Ste
     };
 
     const getFields = (): FieldConfig[] => {
-        let fields: FieldConfig[] = [];
+        const fields: FieldConfig[] = [];
 
         // 1. Majątek Prywatny
         fields.push({
@@ -124,14 +124,14 @@ export default function Step2Assets({ onNext, onPrev, colorScheme = 'red' }: Ste
 
     const fields = getFields();
     const currentField = fields[Math.min(currentIndex, fields.length - 1)];
-    const val = useWatch({ control, name: currentField.id as any });
+    const val = useWatch({ control, name: currentField.id as keyof AnkietaFormData });
 
     const handleCheckboxToggle = (v: string) => {
         const currentVals = (getValues(currentField.id as keyof AnkietaFormData) as string[]) || [];
         const isNone = v === 'Brak majątku' || v === 'Brak majątku firmowego' || v === 'Brak majątku prywatnego';
 
         if (isNone) {
-            setValue(currentField.id, currentVals.includes(v) ? [] : [v] as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+            setValue(currentField.id, (currentVals.includes(v) ? [] : [v]) as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
             return;
         }
 
@@ -141,7 +141,7 @@ export default function Step2Assets({ onNext, onPrev, colorScheme = 'red' }: Ste
         } else {
             newVals.push(v);
         }
-        setValue(currentField.id, newVals as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
+        setValue(currentField.id, newVals as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
     };
 
     const handleNextField = async () => {
@@ -171,7 +171,7 @@ export default function Step2Assets({ onNext, onPrev, colorScheme = 'red' }: Ste
             return (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                     {currentField.options?.map(opt => (
-                        <button key={opt.value} type="button" onClick={() => { setValue(currentField.id, opt.value as any, { shouldValidate: true, shouldDirty: true, shouldTouch: true }); }}
+                        <button key={opt.value} type="button" onClick={() => { setValue(currentField.id, opt.value as never, { shouldValidate: true, shouldDirty: true, shouldTouch: true }); }}
                                 className={`p-6 border rounded-2xl transition-all duration-200 text-center hover:-translate-y-1 hover:shadow-lg active:scale-95 ${val === opt.value ? `${theme.borderPrimary} ${theme.bgLight} ring-2 ${theme.ring} ring-opacity-50 shadow-sm` : 'border-gray-200 hover:border-gray-300 bg-white shadow-sm'}`}>
                             <span className="font-semibold text-lg text-gray-800">{opt.label}</span>
                         </button>
