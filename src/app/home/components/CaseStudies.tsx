@@ -85,7 +85,7 @@ export default function CaseStudies() {
     const handleNext = useCallback(() => {
         const nextIndex = currentIndex + step;
         setCurrentIndex(nextIndex >= caseStudiesData.length ? 0 : nextIndex);
-    }, [currentIndex]); // <-- Zależności dla handleNext
+    }, [currentIndex, step]); // <-- Zależności dla handleNext
 
     const handlePrev = useCallback(() => {
         let prevIndex = currentIndex - step;
@@ -96,7 +96,7 @@ export default function CaseStudies() {
             }
         }
         setCurrentIndex(prevIndex);
-    }, [currentIndex, numPages]); // <-- Zależności dla handlePrev
+    }, [currentIndex, numPages, step]); // <-- Zależności dla handlePrev
 
 // Handlery dotyku również opakowujemy, aby były stabilne
     const handleTouchStart = useCallback((e: React.TouchEvent) => {

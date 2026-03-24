@@ -5,11 +5,10 @@ import { AnkietaFormData, ClientType, ColorScheme } from '../types';
 import { getThemeClasses } from './theme';
 
 interface StepHeaderProps {
-    currentStep: number;
     colorScheme?: ColorScheme;
 }
 
-export default function StepHeader({ currentStep, colorScheme = 'red' }: StepHeaderProps) {
+export default function StepHeader({ colorScheme = 'red' }: StepHeaderProps) {
     const theme = getThemeClasses(colorScheme);
     const { control } = useFormContext<AnkietaFormData>();
     const clientType = useWatch({ control, name: 'clientType' });

@@ -24,7 +24,6 @@ interface AnkietaWizardProps {
 export default function AnkietaWizard({ 
     allowedTypes, 
     defaultType,
-    title,
     colorScheme = 'red'
 }: AnkietaWizardProps) {
     const [currentStep, setCurrentStep] = useState(0);
@@ -91,7 +90,7 @@ export default function AnkietaWizard({
     return (
         <FormProvider {...methods}>
             <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                {currentStep < 5 && <StepHeader currentStep={currentStep} colorScheme={colorScheme} />}
+                {currentStep < 5 && <StepHeader colorScheme={colorScheme} />}
                 <div className="p-6 md:p-10">
                     {currentStep === 0 && (
                         <ClientTypeSelection 
